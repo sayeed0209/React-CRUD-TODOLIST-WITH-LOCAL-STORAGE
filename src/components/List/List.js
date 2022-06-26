@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-const List = ({ todoList, editTodo, handleChnage }) => {
+const List = ({ todoList, editTodo, handleChnage, removeTodo }) => {
 	return (
 		<section>
 			{todoList.map(todo => {
@@ -14,7 +14,6 @@ const List = ({ todoList, editTodo, handleChnage }) => {
 								onChange={() => {
 									handleChnage(id);
 								}}
-								
 							/>
 						</li>
 						<li
@@ -27,7 +26,7 @@ const List = ({ todoList, editTodo, handleChnage }) => {
 							<button className="edit-btn">
 								<FaEdit className="icon" onClick={() => editTodo(id)} />
 							</button>
-							<button className="delete-btn">
+							<button className="delete-btn" onClick={() => removeTodo(id)}>
 								<FaTrash className="icon" />
 							</button>
 						</li>

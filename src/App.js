@@ -9,7 +9,7 @@ const App = () => {
 	const [editId, setEditId] = useState(null);
 	const submitHandler = e => {
 		e.preventDefault();
-	
+
 		if (todo.length === 0 || todo.trim().length < 0) {
 			setAlert({ show: true, msg: 'please enter a todo', type: 'danger' });
 		} else if (todo && isEditing) {
@@ -54,7 +54,20 @@ const App = () => {
 		});
 		setTodoList(newTodo);
 	};
-	
+	const removeTodo = todoId => {
+		const filterList = todoList.filter(item => item.id !== todoId);
+		setTodoList(filterList);
+		setAlert({
+			show: true,
+			type: 'danger',
+			msg: 'todo item deleted succesfully',
+		});
+	};
+	const clearAllTodo = () => {
+		setTodoList([]);
+		setAlert({ show: true, type: 'danger', msg: 'clear all todo succesfully' });
+	};
+
 	return (
 		<main>
 			<section className="section-center">
@@ -82,8 +95,11 @@ const App = () => {
 							todoList={todoList}
 							editTodo={editTodo}
 							handleChnage={handleChnageCheckbox}
+							removeTodo={removeTodo}
 						/>
-						<button className="clear-btn">clear all</button>
+						<button className="clear-btn" onClick={clearAllTodo}>
+							clear all
+						</button>
 					</div>
 				)}
 			</section>
