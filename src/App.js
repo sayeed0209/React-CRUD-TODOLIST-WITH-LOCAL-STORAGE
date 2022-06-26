@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import List from './components/List/List';
 import Alert from './components/Alert/Alert';
+const getLocalStorage = () => {
+	let list = localStorage.getItem('todolist');
+	if (list.length < 0) {
+		return [];
+	} else {
+		return JSON.parse(localStorage.getItem('todolist'));
+	}
+};
 const App = () => {
 	const [todo, setTodo] = useState('');
-	const [todoList, setTodoList] = useState([]);
+	const [todoList, setTodoList] = useState(getLocalStorage());
 	const [alert, setAlert] = useState({ show: false, msg: '', type: '' });
 	const [isEditing, setIsEditing] = useState(false);
 	const [editId, setEditId] = useState(null);
@@ -67,7 +75,9 @@ const App = () => {
 		setTodoList([]);
 		setAlert({ show: true, type: 'danger', msg: 'clear all todo succesfully' });
 	};
-
+	useEffect(() => {
+		localStorage.setItem('todolist', JSON.stringify(todoList));
+	}, [todoList]);
 	return (
 		<main>
 			<section className="section-center">
