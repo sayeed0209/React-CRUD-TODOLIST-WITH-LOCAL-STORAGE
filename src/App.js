@@ -53,14 +53,18 @@ const App = () => {
 		setEditId(id);
 		setTodo(todoItem.title);
 	};
+	
 	const handleChnageCheckbox = id => {
+		let len;
 		const newTodo = todoList.map(todoItem => {
 			if (todoItem.id === id) {
+				
 				return { ...todoItem, completed: !todoItem.completed };
 			}
 			return todoItem;
 		});
 		setTodoList(newTodo);
+		console.log(len);
 	};
 	const removeTodo = todoId => {
 		const filterList = todoList.filter(item => item.id !== todoId);

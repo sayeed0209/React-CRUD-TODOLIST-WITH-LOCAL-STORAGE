@@ -73,7 +73,7 @@ body {
   text-align: center;
   font-size: 2rem;
   text-transform: capitalize;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
   color: var(--clr-grey-1);
   letter-spacing: 2px;
   transition: var(--transition);
@@ -164,7 +164,8 @@ body {
   border-radius: var(--radius);
   text-transform: capitalize;
 }
-
+.cross-btn,
+.checkbox-label,
 .edit-btn,
 .delete-btn {
   background: transparent;
@@ -198,15 +199,21 @@ body {
   color: var(--clr-green-dark);
 }
 
-.delete-btn {
+.cross-btn,.delete-btn {
   color: var(--clr-red-light);
 }
 
-.delete-btn:hover {
+.cross-btn,.delete-btn:hover {
   color: var(--clr-red-dark);
 }
 
+.checkbox-label {
+  color: var(--clr-green-dark);
+}
 
+.checkbox-label:hover {
+  color: var(--clr-green-light);
+}
 
 
 .clear-btn {
@@ -228,4 +235,20 @@ body {
 
 .clear-btn:hover {
   color: var(--clr-red-dark);
+}
+
+.todo-item.completed {
+  text-decoration: line-through;
+  transition: var(--transition);
+
+}
+
+.edit-btn.disable-btn {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.checkbox {
+  display: none;
+  ;
 }
