@@ -3,10 +3,10 @@ import List from './components/List/List';
 import Alert from './components/Alert/Alert';
 const getLocalStorage = () => {
 	let list = localStorage.getItem('todolist');
-	if (list.length < 0) {
-		return [];
-	} else {
+	if (list) {
 		return JSON.parse(localStorage.getItem('todolist'));
+	} else {
+		return [];
 	}
 };
 const App = () => {
@@ -55,7 +55,6 @@ const App = () => {
 	};
 
 	const handleChnageCheckbox = id => {
-		let len;
 		const newTodo = todoList.map(todoItem => {
 			if (todoItem.id === id) {
 				return { ...todoItem, completed: !todoItem.completed };
